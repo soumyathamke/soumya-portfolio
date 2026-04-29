@@ -1,0 +1,346 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soumya Thamke — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090f;
+    --card: #0e1420;
+    --border: rgba(99,179,237,0.1);
+    --accent: #63b3ed;
+    --accent2: #4fd1c5;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden; }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(99,179,237,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(99,179,237,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none; z-index: 0;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 5rem;
+    background: rgba(7,9,15,0.9); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 0 5rem; position: relative; z-index: 1; }
+  .hero-glow { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(99,179,237,0.06) 0%, transparent 70%); top: 40%; left: 30%; transform: translate(-50%,-50%); pointer-events: none; }
+  .hero-content { max-width: 800px; }
+  .hero-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; opacity: 0; animation: fadeUp 0.6s 0.1s ease forwards; }
+  .hero-tag::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+  .hero h1 { font-family: var(--font-head); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards; }
+  .hero h1 .name { background: linear-gradient(120deg, var(--accent) 0%, var(--accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.85; opacity: 0; animation: fadeUp 0.6s 0.35s ease forwards; }
+  .hero-btns { display: flex; gap: 1rem; opacity: 0; animation: fadeUp 0.6s 0.5s ease forwards; }
+  .btn { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; padding: 0.8rem 1.8rem; border-radius: 4px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn-primary { background: var(--accent); color: var(--bg); border: 1px solid var(--accent); font-weight: 500; }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--accent); border: 1px solid rgba(99,179,237,0.3); }
+  .btn-outline:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .section-wrap { max-width: 1050px; margin: 0 auto; padding: 6rem 5rem; position: relative; z-index: 1; }
+  .section-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem; }
+  .section-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+  .section-title { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 3rem; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 5rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; transition: all 0.25s; }
+  .skill-group:hover { border-color: rgba(99,179,237,0.3); transform: translateY(-3px); }
+  .skill-group-title { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.9rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.6rem; background: rgba(99,179,237,0.07); border: 1px solid rgba(99,179,237,0.12); border-radius: 3px; color: var(--text); }
+  .projects-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 2rem 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; transition: all 0.25s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.25s; }
+  .project-card:hover { border-color: rgba(99,179,237,0.25); transform: translateX(5px); }
+  .project-card:hover::before { opacity: 1; }
+.project-num { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+  .project-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .project-year { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 0.9rem; }
+  .project-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.1rem; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tool-tag { font-family: var(--font-mono); font-size: 0.65rem; padding: 0.22rem 0.6rem; background: rgba(79,209,197,0.07); border: 1px solid rgba(79,209,197,0.18); border-radius: 3px; color: var(--accent2); }
+  .project-stats { display: flex; flex-direction: column; gap: 0.6rem; min-width: 150px; }
+  .stat-box { background: rgba(99,179,237,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 0.8rem 1rem; text-align: center; }
+  .stat-val { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-lbl { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .contact-info h3 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .contact-info p { color: var(--muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); text-decoration: none; font-family: var(--font-mono); font-size: 0.78rem; transition: color 0.2s; }
+  .contact-link:hover { color: var(--accent); }
+  .c-icon { width: 30px; height: 30px; background: var(--card); border: 1px solid var(--border); border-radius: 6px; display: grid; place-items: center; font-size: 0.85rem; flex-shrink: 0; }
+  .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .form-input, .form-textarea { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 0.8rem 0.95rem; color: var(--text); font-family: var(--font-body); font-size: 0.88rem; outline: none; transition: border-color 0.2s; resize: none; }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-textarea { min-height: 110px; }
+  .form-submit { background: linear-gradient(120deg, var(--accent), var(--accent2)); color: var(--bg); border: none; border-radius: 6px; padding: 0.85rem; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 500; cursor: pointer; transition: opacity 0.2s, transform 0.2s; }
+  .form-submit:hover { opacity: 0.88; transform: translateY(-2px); }
+  .form-success { display: none; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent2); text-align: center; padding: 0.75rem; background: rgba(79,209,197,0.07); border: 1px solid rgba(79,209,197,0.2); border-radius: 6px; }
+  footer { border-top: 1px solid var(--border); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+  footer p { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
+  footer span { color: var(--accent); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+    .hero { padding: 0 1.5rem; } .section-wrap { padding: 4rem 1.5rem; }
+    hr.divider { margin: 0 1.5rem; } .project-card { grid-template-columns: 1fr; }
+    .project-stats { flex-direction: row; min-width: unset; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">ST.</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Data Analyst · Hyderabad, India</div>
+    <h1>Hi, I'm<br><span class="name">Soumya Thamke.</span></h1>
+    <p class="hero-sub">I turn messy, real-world data into clean insights and dashboards that help people make better decisions. Specialised in Python, R, SQL, and Power BI.</p>
+    <div class="hero-btns">
+      <a href="https://github.com/soumyathamke" target="_blank" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="skills">
+  <div class="section-label">What I work with</div>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Python Libraries</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">Seaborn</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">Statsmodels</span>
+        <span class="skill-tag">Matplotlib</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">R Libraries</div>
+      <div class="skill-tags">
+        <span class="skill-tag">dplyr</span>
+        <span class="skill-tag">ggplot2</span>
+        <span class="skill-tag">readxl</span>
+        <span class="skill-tag">writexl</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools & BI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Databricks</span>
+        <span class="skill-tag">GitHub</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">EDA</span>
+        <span class="skill-tag">Data Quality</span>
+        <span class="skill-tag">Lineage Docs</span>
+        <span class="skill-tag">Outlier Detection</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Linear Regression</span>
+        <span class="skill-tag">OLS</span>
+        <span class="skill-tag">Correlation</span>
+        <span class="skill-tag">Trend Analysis</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="projects">
+  <div class="section-label">What I've built</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-list">
+
+    <div class="project-card">
+      <div class="project-body">
+        <div class="project-num">01 / 03</div>
+        <div class="project-title">Digital Payments & Financial Inclusion</div>
+        <div class="project-year">Economic Impact Study · 2024</div>
+        <p class="project-desc">Cleaned and transformed data across 6 raw sheets in R — removing zero-value records, null transactions, and inconsistent state classifications. Investigated data quality across completeness, accuracy, and consistency. Cross-referenced transaction volume with district-level population density to identify high-population, low-adoption districts and built a Power BI dashboard for stakeholder reporting.</p>
+        <div class="project-tools">
+          <span class="tool-tag">R — dplyr</span>
+          <span class="tool-tag">ggplot2</span>
+          <span class="tool-tag">readxl</span>
+          <span class="tool-tag">Excel</span>
+          <span class="tool-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="project-stats">
+        <div class="stat-box"><div class="stat-val">6</div><div class="stat-lbl">Raw sheets</div></div>
+        <div class="stat-box"><div class="stat-val">20+</div><div class="stat-lbl">Districts</div></div>
+        <div class="stat-box"><div class="stat-val">3</div><div class="stat-lbl">Quarters</div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-body">
+        <div class="project-num">02 / 03</div>
+        <div class="project-title">Urban Growth & Sustainability Assessment</div>
+        <div class="project-year">GCC Countries · 2025</div>
+        <p class="project-desc">Managed a 63-year dataset across 6 GCC countries — applying systematic data transformation and quality controls. Built automated Python pipelines for multi-source integration. Applied Scikit-learn linear regression achieving R² of 0.955 to project urban growth to 2040. Engineered a composite sustainability score and delivered a Power BI dashboard with country slicers and a non-technical policy brief.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python — Pandas</span>
+          <span class="tool-tag">Scikit-learn</span>
+          <span class="tool-tag">Matplotlib</span>
+          <span class="tool-tag">Seaborn</span>
+          <span class="tool-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="project-stats">
+        <div class="stat-box"><div class="stat-val">63yr</div><div class="stat-lbl">Dataset span</div></div>
+        <div class="stat-box"><div class="stat-val">0.955</div><div class="stat-lbl">R² score</div></div>
+        <div class="stat-box"><div class="stat-val">6</div><div class="stat-lbl">Countries</div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-body">
+        <div class="project-num">03 / 03</div>
+        <div class="project-title">Transport Infrastructure & Economic Growth</div>
+        <div class="project-year">MENA Region · 2025</div>
+        <p class="project-desc">Compiled and cleaned cross-country datasets from World Bank, IMF, and national statistics for 8 MENA countries. Applied OLS regression to quantify the relationship between infrastructure spend and GDP per capita. Produced correlation heatmaps, trend lines, and a country-comparison Power BI dashboard. Delivered a mock client advisory brief translating findings into investment recommendations.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python — Pandas</span>
+          <span class="tool-tag">Statsmodels</span>
+          <span class="tool-tag">Seaborn</span>
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">World Bank</span>
+          <span class="tool-tag">IMF</span>
+        </div>
+      </div>
+      <div class="project-stats">
+        <div class="stat-box"><div class="stat-val">8</div><div class="stat-lbl">Countries</div></div>
+        <div class="stat-box"><div class="stat-val">OLS</div><div class="stat-lbl">Regression</div></div>
+        <div class="stat-box"><div class="stat-val">p&lt;.05</div><div class="stat-lbl">Significance</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="contact">
+  <div class="section-label">Let's talk</div>
+  <h2 class="section-title">Get in Touch</h2>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Open to opportunities</h3>
+      <p>I'm actively looking for Data Analyst roles. If you have an opening or just want to talk data — feel free to reach out.</p>
+      <div class="contact-links">
+        <a href="mailto:soumyathamke@gmail.com" class="contact-link">
+          <div class="c-icon">✉</div>soumyathamke@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/soumya-thamke-b04082250" class="contact-link" target="_blank">
+          <div class="c-icon">in</div>linkedin.com/in/soumya-thamke
+        </a>
+        <a href="https://github.com/soumyathamke" class="contact-link" target="_blank">
+          <div class="c-icon">gh</div>github.com/soumyathamke
+        </a>
+        <a class="contact-link" action="https://formspree.io/f/xeevybzy" method="POST"></a>
+          <div class="c-icon">📍</div>Hyderabad, India
+        </a>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xeevybzy" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" name="name" class="form-input" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company</label>
+        <input type="text" name="company" class="form-input" placeholder="Where are you from?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea name="message" class="form-textarea" placeholder="Tell me about the role or what you'd like to discuss..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">SEND MESSAGE</button>
+      <div class="form-success" id="success-msg">✓ Message sent! I'll get back to you soon.</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <span>Soumya Thamke</span>. Built with purpose.</p>
+  <p>Hyderabad, India · Open to work</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  const msg = document.getElementById('success-msg');
+  btn.textContent = 'SENDING...';
+  btn.style.opacity = '0.7';
+  setTimeout(() => {
+    btn.style.display = 'none';
+    msg.style.display = 'block';
+    e.target.reset();
+  }, 1200);
+}
+</script>
+</body>
+</html>
+
