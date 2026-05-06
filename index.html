@@ -1,9 +1,10 @@
-!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soumya Thamke — Data Analyst</title>
+<title>Soumya Thamke — Data Analyst & ML Enthusiast</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -69,7 +70,7 @@
   .project-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.25s; }
   .project-card:hover { border-color: rgba(99,179,237,0.25); transform: translateX(5px); }
   .project-card:hover::before { opacity: 1; }
-.project-num { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+  .project-num { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.6rem; }
   .project-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
   .project-year { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 0.9rem; }
   .project-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.1rem; }
@@ -125,9 +126,9 @@
 <div class="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-tag">Data Analyst · Hyderabad, India</div>
+    <div class="hero-tag">Data Analyst & ML Enthusiast · Hyderabad, India</div>
     <h1>Hi, I'm<br><span class="name">Soumya Thamke.</span></h1>
-    <p class="hero-sub">I turn messy, real-world data into clean insights and dashboards that help people make better decisions. Specialised in Python, R, SQL, and Power BI.</p>
+    <p class="hero-sub">I turn messy, real-world data into clean insights and dashboards that help people make better decisions. Specialised in Python, R, SQL, Power BI, and deep learning.</p>
     <div class="hero-btns">
       <a href="https://github.com/soumyathamke" target="_blank" class="btn btn-primary">View Projects</a>
       <a href="#contact" class="btn btn-outline">Get in Touch</a>
@@ -188,12 +189,14 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Analytics</div>
+      <div class="skill-group-title">Analytics & ML</div>
       <div class="skill-tags">
         <span class="skill-tag">Linear Regression</span>
         <span class="skill-tag">OLS</span>
         <span class="skill-tag">Correlation</span>
         <span class="skill-tag">Trend Analysis</span>
+        <span class="skill-tag">YOLOv8</span>
+        <span class="skill-tag">Object Detection</span>
       </div>
     </div>
   </div>
@@ -208,7 +211,7 @@
 
     <div class="project-card">
       <div class="project-body">
-        <div class="project-num">01 / 03</div>
+        <div class="project-num">01 / 04</div>
         <div class="project-title">Digital Payments & Financial Inclusion</div>
         <div class="project-year">Economic Impact Study · 2024</div>
         <p class="project-desc">Cleaned and transformed data across 6 raw sheets in R — removing zero-value records, null transactions, and inconsistent state classifications. Investigated data quality across completeness, accuracy, and consistency. Cross-referenced transaction volume with district-level population density to identify high-population, low-adoption districts and built a Power BI dashboard for stakeholder reporting.</p>
@@ -229,7 +232,7 @@
 
     <div class="project-card">
       <div class="project-body">
-        <div class="project-num">02 / 03</div>
+        <div class="project-num">02 / 04</div>
         <div class="project-title">Urban Growth & Sustainability Assessment</div>
         <div class="project-year">GCC Countries · 2025</div>
         <p class="project-desc">Managed a 63-year dataset across 6 GCC countries — applying systematic data transformation and quality controls. Built automated Python pipelines for multi-source integration. Applied Scikit-learn linear regression achieving R² of 0.955 to project urban growth to 2040. Engineered a composite sustainability score and delivered a Power BI dashboard with country slicers and a non-technical policy brief.</p>
@@ -250,7 +253,7 @@
 
     <div class="project-card">
       <div class="project-body">
-        <div class="project-num">03 / 03</div>
+        <div class="project-num">03 / 04</div>
         <div class="project-title">Transport Infrastructure & Economic Growth</div>
         <div class="project-year">MENA Region · 2025</div>
         <p class="project-desc">Compiled and cleaned cross-country datasets from World Bank, IMF, and national statistics for 8 MENA countries. Applied OLS regression to quantify the relationship between infrastructure spend and GDP per capita. Produced correlation heatmaps, trend lines, and a country-comparison Power BI dashboard. Delivered a mock client advisory brief translating findings into investment recommendations.</p>
@@ -267,6 +270,29 @@
         <div class="stat-box"><div class="stat-val">8</div><div class="stat-lbl">Countries</div></div>
         <div class="stat-box"><div class="stat-val">OLS</div><div class="stat-lbl">Regression</div></div>
         <div class="stat-box"><div class="stat-val">p&lt;.05</div><div class="stat-lbl">Significance</div></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-body">
+        <div class="project-num">04 / 04</div>
+        <div class="project-title">GhostEye — Military Asset Detection</div>
+        <div class="project-year">Deep Learning · Computer Vision · 2025</div>
+        <p class="project-desc">Fine-tuned a YOLOv8n model on the DOTA dataset (via Roboflow) to detect military assets — planes, ships, tanks, helicopters, and more — from aerial and satellite imagery. Covered the full ML pipeline: data loading, 30-epoch transfer learning on Google Colab T4 GPU, OpenCV bounding-box visualisation, mAP/Precision/Recall evaluation, FPS benchmarking across 50 validation images, and ONNX export for deployment.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">YOLOv8 — Ultralytics</span>
+          <span class="tool-tag">OpenCV</span>
+          <span class="tool-tag">PyTorch</span>
+          <span class="tool-tag">Roboflow</span>
+          <span class="tool-tag">Google Colab</span>
+          <span class="tool-tag">ONNX</span>
+        </div>
+      </div>
+      <div class="project-stats">
+        <div class="stat-box"><div class="stat-val">15</div><div class="stat-lbl">Classes</div></div>
+        <div class="stat-box"><div class="stat-val">30ep</div><div class="stat-lbl">Training</div></div>
+        <div class="stat-box"><div class="stat-val">T4</div><div class="stat-lbl">GPU</div></div>
       </div>
     </div>
 
@@ -292,7 +318,7 @@
         <a href="https://github.com/soumyathamke" class="contact-link" target="_blank">
           <div class="c-icon">gh</div>github.com/soumyathamke
         </a>
-        <a class="contact-link" action="https://formspree.io/f/xeevybzy" method="POST"></a>
+        <a class="contact-link">
           <div class="c-icon">📍</div>Hyderabad, India
         </a>
       </div>
@@ -343,4 +369,3 @@ function handleSubmit(e) {
 </script>
 </body>
 </html>
-
